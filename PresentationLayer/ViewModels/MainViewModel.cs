@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer;
+using PresentationLayer.Commands;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace PresentationLayer
 {
@@ -15,6 +17,9 @@ namespace PresentationLayer
         private ICollection<BookViewModel> books;
         private IMapper mapper;
         private BookViewModel selectedBook;
+
+        private Command getBooksCommand;
+        private Command createBookCommand;
 
         public MainViewModel()
         {
@@ -30,7 +35,24 @@ namespace PresentationLayer
                 });
             mapper = new Mapper(config);
 
-            books = new ObservableCollection<BookViewModel>(mapper.Map<IEnumerable<BookViewModel>>(service.GetAllBooks()));
+            /////////////// Create Commands
+            getBooksCommand = new DelegateCommand(GetBooks);
+            createBookCommand = new DelegateCommand(CreateNewBook);
+        }
+
+
+        public void CreateNewBook()
+        {
+            CreateBookWindow window = new CreateBookWindow();
+            if (window.ShowDialog().Value)
+            {
+                MessageBox.Show($"{window.Book.Title} {window.Book.Author.FirstName}");
+            }
+        }
+        public void GetBooks()
+        {
+            var result = mapper.Map<IEnumerable<BookViewModel>>(service.GetAllBooks());
+            books = new ObservableCollection<BookViewModel>(result);
         }
 
         public IEnumerable<BookViewModel> Books => books;
@@ -39,5 +61,8 @@ namespace PresentationLayer
             get { return selectedBook; }
             set { SetProperty(ref selectedBook, value); }
         }
+
+        public ICommand GetBooksCommand => getBooksCommand;
+        public ICommand CreateBookCommand => createBookCommand;
     }
 }

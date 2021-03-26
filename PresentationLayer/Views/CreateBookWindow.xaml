@@ -4,9 +4,41 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLayer"
+        xmlns:bll="clr-namespace:BusinessLogicLayer;assembly=BusinessLogicLayer"
+        d:DataContext="{d:DesignInstance Type=bll:BookDTO}"
         mc:Ignorable="d"
-        Title="CreateBookWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="CreateBookWindow" Height="360.348" Width="356.093">
+    <DockPanel>
+        <TextBlock FontSize="36" FontWeight="Bold" TextAlignment="Center" DockPanel.Dock="Top">Create New Book</TextBlock>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <Button Width="100" Margin="20,10" Padding="10" Click="Button_Click_1">Cancel</Button>
+            <Button Width="100" Margin="20,10" Padding="10" Click="Button_Click">OK</Button>
+        </StackPanel>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Padding="6,2" VerticalAlignment="Center" FontSize="22">Title:</Label>
+            <TextBox Text="{Binding Title}" Grid.Row="0" Grid.Column="1" Margin="10,5"  VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBox>
+
+            <Label Grid.Row="1" Grid.Column="0" Padding="6,2" VerticalAlignment="Center" FontSize="22">Pages:</Label>
+            <TextBox Text="{Binding Pages}"  Grid.Row="1" Grid.Column="1" Margin="10,5"  VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBox>
+
+            <Label Grid.Row="2" Grid.Column="0" Padding="6,2" VerticalAlignment="Center" FontSize="22">Genre:</Label>
+            <ComboBox Name="genreComboBox" Sele Grid.Row="2" Grid.Column="1" Margin="10,5" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></ComboBox>
+
+            <Label Grid.Row="3" Grid.Column="0" Padding="6,2" VerticalAlignment="Center" FontSize="22">Author:</Label>
+            <ComboBox SelectedItem="{Binding Author}" Grid.Row="3" Grid.Column="1" Margin="10,5" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></ComboBox>
+        </Grid>
+    </DockPanel>
 </Window>

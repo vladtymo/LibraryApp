@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogicLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,26 @@ namespace PresentationLayer
     /// </summary>
     public partial class CreateBookWindow : Window
     {
+        public BookDTO Book { get; set; }
         public CreateBookWindow()
         {
             InitializeComponent();
+
+            //genreComboBox.SelectedValuePath = nameof(GenreDTO.GenreId)
+
+            Book = new BookDTO();
+            this.DataContext = Book;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

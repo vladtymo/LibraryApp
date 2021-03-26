@@ -55,7 +55,10 @@
                 <Label Grid.Row="3" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Pages:</Label>
                 <TextBlock Text="{Binding SelectedBook.Pages}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBlock>
             </Grid>
-            <Button Margin="10" Padding="10" HorizontalAlignment="Right" DockPanel.Dock="Bottom">Add New Book</Button>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" DockPanel.Dock="Bottom">
+                <Button Command="{Binding CreateBookCommand}" Margin="10" Padding="10">Add New Book</Button>
+                <Button Command="{Binding GetBooksCommand}" Margin="10" Padding="10">Get Book List</Button>
+            </StackPanel>
         </DockPanel>
 
     </Grid>
