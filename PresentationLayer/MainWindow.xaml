@@ -7,6 +7,53 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <ListBox Grid.Column="0" HorizontalContentAlignment="Stretch">
+            <!--<ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold">Blabal title</TextBlock>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>-->
+            <DockPanel LastChildFill="False">
+                <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold">Blabal title</TextBlock>
+                <TextBlock Margin="10,0" VerticalAlignment="Center" FontSize="18">Author Name</TextBlock>
+                <TextBlock DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18">Genre</TextBlock>
+            </DockPanel>
+        </ListBox>
+        <GridSplitter Grid.Column="1" Width="3"></GridSplitter>
+
+        <Grid Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Title:</Label>
+            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold">Blabal title</TextBlock>
+
+            <Label Grid.Row="1" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Author:</Label>
+            <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold">Blabla Author</TextBlock>
+
+            <Label Grid.Row="2" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Genre:</Label>
+            <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold">Adventure</TextBlock>
+
+            <Label Grid.Row="3" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Pages:</Label>
+            <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold">1023</TextBlock>
+        </Grid>
         
     </Grid>
 </Window>
