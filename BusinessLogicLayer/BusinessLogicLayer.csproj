@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7BA67748-FDA5-4B0B-AC75-0CD194887881}</ProjectGuid>
+    <ProjectGuid>{08CBCE6A-AF66-4E62-B73A-CEC9A82D4C11}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BusinessLogicLayer</RootNamespace>
@@ -44,8 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataTransferObjects\AuthorDTO.cs" />
-    <Compile Include="DataTransferObjects\BookDTO.cs" />
     <Compile Include="BookService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
