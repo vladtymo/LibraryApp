@@ -14,11 +14,7 @@ namespace PresentationLayer
         public int Id { get; set; }
         public int AuthorId { get; set; }
         public int GenreId { get; set; }
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
-        }
+        public string Title { get => title; set => SetProperty(ref title, value); }
         public string AuthorName
         {
             get { return authorName; }

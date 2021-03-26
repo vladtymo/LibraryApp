@@ -121,9 +121,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj">
-      <Project>{08cbce6a-af66-4e62-b73a-cec9a82d4c11}</Project>
-      <Name>BusinessLogicLayer</Name>
+    <ProjectReference Include="..\BusinessLoginLayer\BusinessLoginLayer.csproj">
+      <Project>{e1649305-7a29-46d0-b39e-dd376ea5d90b}</Project>
+      <Name>BusinessLoginLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

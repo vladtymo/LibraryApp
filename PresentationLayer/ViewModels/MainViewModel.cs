@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BusinessLogicLayer;
+using BusinessLoginLayer;
 using PresentationLayer.Commands;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +24,7 @@ namespace PresentationLayer
         public MainViewModel()
         {
             service = new BookService();
+            books = new ObservableCollection<BookViewModel>();
 
             IConfigurationProvider config = new MapperConfiguration(
                 cfg =>
@@ -43,16 +44,21 @@ namespace PresentationLayer
 
         public void CreateNewBook()
         {
-            CreateBookWindow window = new CreateBookWindow();
-            if (window.ShowDialog().Value)
+            CreateBookWindow window = new CreateBookWindow(service);
+            if (window.ShowDialog() == true)
             {
-                MessageBox.Show($"{window.Book.Title} {window.Book.Author.FirstName}");
+                service.CreateNewBook(window.Book);
             }
         }
         public void GetBooks()
         {
             var result = mapper.Map<IEnumerable<BookViewModel>>(service.GetAllBooks());
-            books = new ObservableCollection<BookViewModel>(result);
+            books.Clear();
+
+            foreach (var b in result)
+            {
+                books.Add(b);
+            }
         }
 
         public IEnumerable<BookViewModel> Books => books;

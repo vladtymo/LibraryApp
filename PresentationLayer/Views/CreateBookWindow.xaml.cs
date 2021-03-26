@@ -1,4 +1,4 @@
-﻿using BusinessLogicLayer;
+﻿using BusinessLoginLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +21,14 @@ namespace PresentationLayer
     public partial class CreateBookWindow : Window
     {
         public BookDTO Book { get; set; }
-        public CreateBookWindow()
+        public CreateBookWindow(IBookService bookService)
         {
             InitializeComponent();
 
-            //genreComboBox.SelectedValuePath = nameof(GenreDTO.GenreId)
+            genreList.ItemsSource = bookService.GetAllGenres();
+            genreList.DisplayMemberPath = nameof(GenreDTO.Name);
+            authorList.ItemsSource = bookService.GetAllAuthors();
+            authorList.DisplayMemberPath = nameof(AuthorDTO.FirstName);
 
             Book = new BookDTO();
             this.DataContext = Book;
