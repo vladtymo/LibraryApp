@@ -68,6 +68,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BookService.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
