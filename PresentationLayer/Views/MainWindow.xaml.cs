@@ -23,6 +23,7 @@ namespace PresentationLayer
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel();
         }
     }
 }

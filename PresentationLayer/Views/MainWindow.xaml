@@ -1,0 +1,62 @@
+﻿<Window x:Class="PresentationLayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer"
+        d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" MinWidth="100"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" MinWidth="100"/>
+        </Grid.ColumnDefinitions>
+        
+        <ListBox ItemsSource="{Binding Books}" 
+                 SelectedItem="{Binding SelectedBook, Mode=OneWayToSource}"
+                 Grid.Column="0" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel LastChildFill="False">
+                        <TextBlock Text="{Binding Title}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding AuthorName}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                        <TextBlock Text="{Binding Pages}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="3"></GridSplitter>
+
+        <DockPanel Grid.Column="2" LastChildFill="False">
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Title:</Label>
+                <TextBlock Text="{Binding SelectedBook.Title}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBlock>
+
+                <Label Grid.Row="1" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Author:</Label>
+                <TextBlock Text="{Binding SelectedBook.AuthorName}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBlock>
+
+                <Label Grid.Row="2" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Genre:</Label>
+                <TextBlock Text="{Binding SelectedBook.GenreName}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBlock>
+
+                <Label Grid.Row="3" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Pages:</Label>
+                <TextBlock Text="{Binding SelectedBook.Pages}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBlock>
+            </Grid>
+            <Button Margin="10" Padding="10" HorizontalAlignment="Right" DockPanel.Dock="Bottom">Add New Book</Button>
+        </DockPanel>
+
+    </Grid>
+</Window>
