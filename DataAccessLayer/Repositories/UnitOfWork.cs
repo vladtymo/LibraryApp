@@ -9,7 +9,7 @@ namespace DataAccessLayer
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private LibraryModel context = new LibraryModel();
+        private /*static*/ LibraryModel context = new LibraryModel();
         private GenericRepository<Book> bookRepository;
         private GenericRepository<Author> authorRepository;
         private GenericRepository<Genre> genreRepository;
