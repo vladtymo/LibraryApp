@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using AutoMapper;
 using BusinessLogicLayer;
 
@@ -104,6 +105,7 @@ namespace PresentationLayer
 
         private ICollection<BookViewModel> books = new ObservableCollection<BookViewModel>();
         private BookViewModel selectedBook;
+
         public MainViewModel()
         {
             IConfigurationProvider config = new MapperConfiguration(
@@ -117,6 +119,8 @@ namespace PresentationLayer
                 });
 
             mapper = new Mapper(config);
+
+            LoadAllBooks();
         }
 
         public void LoadAllBooks()
@@ -135,12 +139,7 @@ namespace PresentationLayer
         public BookViewModel SelectedBook
         {
             get { return selectedBook; }
-            set
-            {
-                //selectedBook = value;
-                //OnPropertyChanged();
-                SetProperty(ref selectedBook, value);
-            }
+            set { SetProperty(ref selectedBook, value); }
         }
     }
 }

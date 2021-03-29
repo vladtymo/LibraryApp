@@ -18,14 +18,14 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel LastChildFill="False">
-                        <TextBlock Text="{Binding SelectedBook.Title}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
-                        <TextBlock Text="{Binding SelectedBook.Author.FullName}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
-                        <TextBlock Text="{Binding SelectedBook.Pages}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                        <TextBlock Text="{Binding Title}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding Author.FullName}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                        <TextBlock Text="{Binding Pages}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
                     </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <GridSplitter Grid.Column="1" Width="3"></GridSplitter>
+        <GridSplitter Grid.Column="1" Width="3" HorizontalAlignment="Stretch"></GridSplitter>
 
         <Grid Grid.Column="2">
             <Grid.ColumnDefinitions>
@@ -41,16 +41,16 @@
             </Grid.RowDefinitions>
             
             <Label Grid.Row="0" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Title:</Label>
-            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold">Blabal title</TextBlock>
+            <TextBlock Text="{Binding SelectedBook.Title}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBlock>
 
             <Label Grid.Row="1" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Author:</Label>
-            <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold">Blabla Author</TextBlock>
+            <TextBlock Text="{Binding SelectedBook.Author.FullName}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBlock>
 
             <Label Grid.Row="2" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Genre:</Label>
-            <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold">Adventure</TextBlock>
+            <TextBlock Text="{Binding SelectedBook.GenreName}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBlock>
 
             <Label Grid.Row="3" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Pages:</Label>
-            <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold">1023</TextBlock>
+            <TextBlock Text="{Binding SelectedBook.Pages}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBlock>
         </Grid>
         
     </Grid>
