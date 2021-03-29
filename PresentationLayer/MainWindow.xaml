@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        d:DataContext="{d:DesignInstance d:Type=local:MainViewModel, IsDesignTimeCreatable=True}"
         xmlns:local="clr-namespace:PresentationLayer"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -13,19 +14,16 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <ListBox Grid.Column="0" HorizontalContentAlignment="Stretch">
-            <!--<ListBox.ItemTemplate>
+        <ListBox ItemsSource="{Binding Books}" Grid.Column="0" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel>
-                        <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold">Blabal title</TextBlock>
+                    <DockPanel LastChildFill="False">
+                        <TextBlock Text="{Binding SelectedBook.Title}" VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding SelectedBook.Author.FullName}" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
+                        <TextBlock Text="{Binding SelectedBook.Pages}" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18"></TextBlock>
                     </DockPanel>
                 </DataTemplate>
-            </ListBox.ItemTemplate>-->
-            <DockPanel LastChildFill="False">
-                <TextBlock VerticalAlignment="Center" FontSize="18" FontWeight="SemiBold">Blabal title</TextBlock>
-                <TextBlock Margin="10,0" VerticalAlignment="Center" FontSize="18">Author Name</TextBlock>
-                <TextBlock DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" FontSize="18">Genre</TextBlock>
-            </DockPanel>
+            </ListBox.ItemTemplate>
         </ListBox>
         <GridSplitter Grid.Column="1" Width="3"></GridSplitter>
 
