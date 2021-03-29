@@ -41,8 +41,8 @@ namespace PresentationLayer
             mapper = new Mapper(config);
 
             /////////////// Create Commands
-            getBooksCommand = new DelegateCommand(GetBooks);
-            createBookCommand = new DelegateCommand(CreateNewBook);
+            getBooksCommand = new DelegateCommand(o => GetBooks());
+            createBookCommand = new DelegateCommand(o => CreateNewBook());
         }
 
 

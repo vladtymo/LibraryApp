@@ -2,6 +2,7 @@
 using BusinessLogicLayer;
 using PresentationLayer.Commands;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PresentationLayer
@@ -14,11 +15,13 @@ namespace PresentationLayer
             Authors = mapper.Map<IEnumerable<AuthorViewModel>>(service.GetAllAuthors());
 
             Book = new BookViewModel();
-            OkCmd = new DelegateCommand(() => IsOK = true);
+            OkCmd = new DelegateCommand((o) => { IsOK = true; ((Window)o).Close(); });
+            CancelCmd = new DelegateCommand((o) => { IsOK = false; ((Window)o).Close(); });
         }
 
         public bool IsOK { get; set; }
         public ICommand OkCmd { get; }
+        public ICommand CancelCmd { get; }
         public BookViewModel Book { get; set; }
         public IEnumerable<AuthorViewModel> Authors { get; }
         public IEnumerable<GenreViewModel> Genres { get; }

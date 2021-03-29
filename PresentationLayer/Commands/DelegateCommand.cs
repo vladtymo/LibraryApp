@@ -8,30 +8,30 @@ namespace PresentationLayer.Commands
 {
     internal sealed class DelegateCommand : Command
     {
-        private static readonly Func<bool> defaultCanExecuteMethod = () => true;
+        private static readonly Func<object, bool> defaultCanExecuteMethod = (obj) => true;
 
-        private readonly Func<bool> canExecuteMethod;
-        private readonly Action executeMethod;
+        private readonly Func<object, bool> canExecuteMethod;
+        private readonly Action<object> executeMethod;
 
-        public DelegateCommand(Action executeMethod) :
+        public DelegateCommand(Action<object> executeMethod) :
             this(executeMethod, defaultCanExecuteMethod)
         {
         }
 
-        public DelegateCommand(Action executeMethod, Func<bool> canExecuteMethod)
+        public DelegateCommand(Action<object> executeMethod, Func<object, bool> canExecuteMethod)
         {
             this.canExecuteMethod = canExecuteMethod;
             this.executeMethod = executeMethod;
         }
 
-        protected override bool CanExecute()
+        protected override bool CanExecute(object parameter)
         {
-            return canExecuteMethod();
+            return canExecuteMethod(parameter);
         }
 
-        protected override void Execute()
+        protected override void Execute(object parameter)
         {
-            executeMethod();
+            executeMethod(parameter);
         }
     }
 }

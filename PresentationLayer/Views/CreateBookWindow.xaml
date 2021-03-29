@@ -12,7 +12,7 @@
         <TextBlock FontSize="36" FontWeight="Bold" TextAlignment="Center" DockPanel.Dock="Top">Create New Book</TextBlock>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" DockPanel.Dock="Bottom">
-            <Button Width="100" Margin="20,10" Padding="10">Cancel</Button>
+            <Button Command="{Binding CancelCmd, Mode=OneWay}" CommandParameter="{Binding ElementName=window}" Width="100" Margin="20,10" Padding="10">Cancel</Button>
             <Button Command="{Binding OkCmd, Mode=OneWay}" CommandParameter="{Binding ElementName=window}" Width="100" Margin="20,10" Padding="10">OK</Button>
         </StackPanel>
 

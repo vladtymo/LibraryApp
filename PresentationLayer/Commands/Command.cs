@@ -11,12 +11,12 @@ namespace PresentationLayer.Commands
     {
         public event EventHandler CanExecuteChanged;
 
-        protected virtual bool CanExecute()
+        protected virtual bool CanExecute(object parameter)
         {
             return true;
         }
 
-        protected abstract void Execute();
+        protected abstract void Execute(object parameter);
 
         protected virtual void OnCanExecuteChanged(EventArgs e)
         {
@@ -30,12 +30,12 @@ namespace PresentationLayer.Commands
 
         bool ICommand.CanExecute(object parameter)
         {
-            return CanExecute();
+            return CanExecute(parameter);
         }
 
         void ICommand.Execute(object parameter)
         {
-            Execute();
+            Execute(parameter);
         }
     }
 }
