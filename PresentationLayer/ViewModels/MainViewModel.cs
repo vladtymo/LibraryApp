@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using AutoMapper;
 using BusinessLogicLayer;
+using PresentationLayer.Commands;
 
 namespace PresentationLayer
 {
@@ -14,13 +16,14 @@ namespace PresentationLayer
         private IBookService bookService = new BookService();
         private IMapper mapper;
 
+        private Command loadBooksCmd;
+
         private ICollection<BookViewModel> books = new ObservableCollection<BookViewModel>();
         private BookViewModel selectedBook;
 
         public MainViewModel()
         {
-            IConfigurationProvider config = new MapperConfiguration(
-                cfg =>
+            IConfigurationProvider config = new MapperConfiguration(cfg =>
                 {
                     cfg.CreateMap<BookDTO, BookViewModel>();
                     cfg.CreateMap<AuthorDTO, AuthorViewModel>();
@@ -28,10 +31,9 @@ namespace PresentationLayer
                     cfg.CreateMap<BookViewModel, BookDTO>();
                     cfg.CreateMap<AuthorViewModel, AuthorDTO>();
                 });
-
             mapper = new Mapper(config);
 
-            LoadAllBooks();
+            loadBooksCmd = new DelegateCommand(LoadAllBooks);
         }
 
         public void LoadAllBooks()
@@ -52,5 +54,7 @@ namespace PresentationLayer
             get { return selectedBook; }
             set { SetProperty(ref selectedBook, value); }
         }
+
+        public ICommand LoadBooksCmd => loadBooksCmd;
     }
 }

@@ -27,8 +27,11 @@ namespace BusinessLogicLayer
                     // Entity to DTO
                     cfg.CreateMap<Book, BookDTO>()
                         .ForMember(dst => dst.GenreName, opt => opt.MapFrom(src => src.Genre.Name));
-
                     cfg.CreateMap<Author, AuthorDTO>();
+
+                    // DTO to Entity
+                    cfg.CreateMap<BookDTO, Book>();
+                    cfg.CreateMap<AuthorDTO, Author>();
                 });
 
             mapper = new Mapper(config);

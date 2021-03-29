@@ -28,7 +28,8 @@
         </ListBox>
         <GridSplitter Grid.Column="1" Width="3" HorizontalAlignment="Stretch"></GridSplitter>
 
-        <Grid Grid.Column="2">
+        <DockPanel Grid.Column="2" LastChildFill="False">
+            <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -53,6 +54,10 @@
             <Label Grid.Row="3" Grid.Column="0" Padding="6,2" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="18">Pages:</Label>
             <TextBlock Text="{Binding SelectedBook.Pages}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBlock>
         </Grid>
+            <StackPanel Margin="10" HorizontalAlignment="Center" DockPanel.Dock="Bottom">
+                <Button Command="{Binding LoadBooksCmd}" Padding="20,5">Load Books</Button>
+            </StackPanel>
+        </DockPanel>
         
     </Grid>
 </Window>
