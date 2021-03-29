@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer
 {
-
-    public class BookService
+    public interface IBookService
+    {
+        IEnumerable<BookDTO> GetAllBooks();
+        void CreateNewBook(BookDTO bookDTO);
+    }
+    public class BookService : IBookService
     {
         private IUnitOfWork repositories;
         private IMapper mapper;
@@ -30,12 +34,13 @@ namespace BusinessLogicLayer
             mapper = new Mapper(config);
         }
 
+        // Public Service Interface
         public IEnumerable<BookDTO> GetAllBooks()
         {
             var result = repositories.BookRepos.Get(includeProperties: $"{nameof(Book.Genre)},{nameof(Book.Author)}");
             return mapper.Map<IEnumerable<BookDTO>>(result);
 
-            // manual converter
+            //// manual converter
             //List<BookDTO> books = new List<BookDTO>();
 
             //foreach (var b in result)
@@ -64,6 +69,7 @@ namespace BusinessLogicLayer
         public void CreateNewBook(BookDTO bookDTO)
         {
             repositories.BookRepos.Insert(mapper.Map<Book>(bookDTO));
+            repositories.Save();
         }
     }
 }
