@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using BusinessLogicLayer;
+//using BusinessLogicLayer;
 using PresentationLayer.Commands;
+using PresentationLayer.WcfService;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace PresentationLayer
 
         public MainViewModel()
         {
-            service = new BookService();
+            service = new BookServiceClient();
             books = new ObservableCollection<BookViewModel>();
 
             IConfigurationProvider config = new MapperConfiguration(cfg =>

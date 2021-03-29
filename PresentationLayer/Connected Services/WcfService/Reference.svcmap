@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d960d4b7-3bc2-4dbd-b5fd-c4c6e1cf9ea0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://artemchat.gear.host/Service1.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="c306d715-ba5f-44e9-a596-edd10003c214" SourceId="1" SourceUrl="http://artemchat.gear.host/Service1.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service131.xsd" MetadataType="Schema" ID="163ec333-5159-4c30-9111-daaa5db69f30" SourceId="1" SourceUrl="http://artemchat.gear.host/Service1.svc?xsd=xsd2" />
+    <MetadataFile FileName="BookService1.wsdl" MetadataType="Wsdl" ID="521c1ec6-4ee4-47aa-ba84-fb42f29c9205" SourceId="1" SourceUrl="http://artemchat.gear.host/Service1.svc?wsdl" />
+    <MetadataFile FileName="Service132.xsd" MetadataType="Schema" ID="25794916-3b2b-486b-94a9-9811d84df1f1" SourceId="1" SourceUrl="http://artemchat.gear.host/Service1.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service11.disco" MetadataType="Disco" ID="c37ff731-f6e6-487a-8ee8-0d8c557265d5" SourceId="1" SourceUrl="http://artemchat.gear.host/Service1.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
