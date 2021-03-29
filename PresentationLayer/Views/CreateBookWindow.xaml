@@ -35,7 +35,7 @@
             <TextBox Text="{Binding Pages}"  Grid.Row="1" Grid.Column="1" Margin="10,5"  VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBox>
 
             <Label Grid.Row="2" Grid.Column="0" Padding="6,2" VerticalAlignment="Center" FontSize="22">Genre:</Label>
-            <ComboBox Name="genreComboBox" Sele Grid.Row="2" Grid.Column="1" Margin="10,5" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></ComboBox>
+            <ComboBox Name="genreComboBox" Grid.Row="2" Grid.Column="1" Margin="10,5" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></ComboBox>
 
             <Label Grid.Row="3" Grid.Column="0" Padding="6,2" VerticalAlignment="Center" FontSize="22">Author:</Label>
             <ComboBox SelectedItem="{Binding Author}" Grid.Row="3" Grid.Column="1" Margin="10,5" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></ComboBox>
