@@ -2,14 +2,56 @@
 
 namespace PresentationLayer
 {
+    public class GenreViewModel : ViewModelBase
+    {
+        private string name;
+
+        public int Id { get; set; }
+
+        public string Name
+        {
+            get { return name; }
+            set { SetProperty(ref name, value); }
+        }
+    }
+    public class AuthorViewModel : ViewModelBase
+    {
+        private string firstName;
+        private string lastName;
+        private DateTime? birthDate;
+
+        public int Id { get; set; }
+        public string FirstName
+        {
+            get { return firstName; }
+            set
+            {
+                SetProperty(ref firstName, value);
+                OnPropertyChanged(nameof(FullName));
+            }
+        }
+        public string LastName
+        {
+            get { return lastName; }
+            set 
+            { 
+                SetProperty(ref lastName, value);
+                OnPropertyChanged(nameof(FullName)); 
+            }
+        }
+        public string FullName => $"{FirstName} {LastName}";
+        public DateTime? BirthDate
+        {
+            get { return birthDate; }
+            set { SetProperty(ref birthDate, value); }
+        }
+    }
     public class BookViewModel : ViewModelBase
     {
         private string title;
-        private string authorName;
-        private string authorSurname;
-        private DateTime? authorBirthDate;
-        private string genreName;
         private int pages;
+        private AuthorViewModel author;
+        private GenreViewModel genre;
 
         public int Id { get; set; }
         public int AuthorId { get; set; }
@@ -19,25 +61,15 @@ namespace PresentationLayer
             get { return title; }
             set { SetProperty(ref title, value); }
         }
-        public string AuthorName
+        public AuthorViewModel Author
         {
-            get { return authorName; }
-            set { SetProperty(ref authorName, value); }
+            get { return author; }
+            set { SetProperty(ref author, value); }
         }
-        public string AuthorSurname
+        public GenreViewModel Genre
         {
-            get { return authorSurname; }
-            set { SetProperty(ref authorSurname, value); }
-        }
-        public DateTime? AuthorBirthDate
-        {
-            get { return authorBirthDate; }
-            set { SetProperty(ref authorBirthDate, value); }
-        }
-        public string GenreName
-        {
-            get { return genreName; }
-            set { SetProperty(ref genreName, value); }
+            get { return genre; }
+            set { SetProperty(ref genre, value); }
         }
         public int Pages
         {

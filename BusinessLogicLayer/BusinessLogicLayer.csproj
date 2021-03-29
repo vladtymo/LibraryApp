@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="DataTransferObjects\AuthorDTO.cs" />
     <Compile Include="DataTransferObjects\BookDTO.cs" />
+    <Compile Include="DataTransferObjects\GenreDTO.cs" />
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

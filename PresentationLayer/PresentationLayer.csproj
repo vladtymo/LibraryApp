@@ -71,6 +71,7 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
+    <Compile Include="ViewModels\NewBookViewModel.cs" />
     <Compile Include="Views\CreateBookWindow.xaml.cs">
       <DependentUpon>CreateBookWindow.xaml</DependentUpon>
     </Compile>

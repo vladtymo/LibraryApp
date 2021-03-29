@@ -14,8 +14,9 @@ namespace PresentationLayer
     public class MainViewModel : ViewModelBase
     {
         private IBookService service;
-        private ICollection<BookViewModel> books;
         private IMapper mapper;
+
+        private ICollection<BookViewModel> books;
         private BookViewModel selectedBook;
 
         private Command getBooksCommand;
@@ -24,14 +25,18 @@ namespace PresentationLayer
         public MainViewModel()
         {
             service = new BookService();
+            books = new ObservableCollection<BookViewModel>();
 
-            IConfigurationProvider config = new MapperConfiguration(
-                cfg =>
+            IConfigurationProvider config = new MapperConfiguration(cfg =>
                 {
-                    cfg.CreateMap<BookDTO, BookViewModel>()
-                        .ForMember(dst => dst.AuthorName, opt => opt.MapFrom(src => src.Author.FirstName))
-                        .ForMember(dst => dst.AuthorSurname, opt => opt.MapFrom(src => src.Author.LastName))
-                        .ForMember(dst => dst.AuthorBirthDate, opt => opt.MapFrom(src => src.Author.BirthDate));
+                    cfg.CreateMap<BookDTO, BookViewModel>();
+                    cfg.CreateMap<AuthorDTO, AuthorViewModel>();
+                    cfg.CreateMap<GenreDTO, GenreViewModel>();
+                    //-------------------------------------
+                    cfg.CreateMap<BookViewModel, BookDTO>();
+                    cfg.CreateMap<AuthorViewModel, AuthorDTO>();
+                    cfg.CreateMap<GenreViewModel, GenreDTO>();
+
                 });
             mapper = new Mapper(config);
 
@@ -43,16 +48,22 @@ namespace PresentationLayer
 
         public void CreateNewBook()
         {
-            CreateBookWindow window = new CreateBookWindow();
-            if (window.ShowDialog().Value)
+            NewBookViewModel newBook = new NewBookViewModel(service, mapper);
+            CreateBookWindow window = new CreateBookWindow(newBook);
+            window.ShowDialog();
+            if (newBook.IsOK)
             {
-                MessageBox.Show($"{window.Book.Title} {window.Book.Author.FirstName}");
+                service.CreateNewBook(mapper.Map<BookDTO>(newBook.Book));
             }
         }
         public void GetBooks()
         {
             var result = mapper.Map<IEnumerable<BookViewModel>>(service.GetAllBooks());
-            books = new ObservableCollection<BookViewModel>(result);
+            books.Clear();
+            foreach (var item in result)
+            {
+                books.Add(item);
+            }
         }
 
         public IEnumerable<BookViewModel> Books => books;

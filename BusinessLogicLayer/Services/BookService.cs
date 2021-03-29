@@ -12,6 +12,8 @@ namespace BusinessLogicLayer
     {
         void CreateNewBook(BookDTO newBook);
         IEnumerable<BookDTO> GetAllBooks();
+        IEnumerable<AuthorDTO> GetAllAuthors();
+        IEnumerable<GenreDTO> GetAllGenres();
     }
 
     public class BookService : IBookService
@@ -23,17 +25,17 @@ namespace BusinessLogicLayer
         {
             repositroties = new UnitOfWork();
 
-            IConfigurationProvider config = new MapperConfiguration(
-                cfg =>
+            IConfigurationProvider config = new MapperConfiguration(cfg =>
                 {
                     // From Entity to DTO
-                    cfg.CreateMap<Book, BookDTO>()
-                        .ForMember(dst => dst.GenreName, opt => opt.MapFrom(src => src.Genre.Name));
+                    cfg.CreateMap<Book, BookDTO>();
                     cfg.CreateMap<Author, AuthorDTO>();
+                    cfg.CreateMap<Genre, GenreDTO>();
 
                     // From DTO to Entity
                     cfg.CreateMap<BookDTO, Book>();
                     cfg.CreateMap<AuthorDTO, Author>();
+                    cfg.CreateMap<GenreDTO, Genre>();
                 });
 
             mapper = new Mapper(config);
@@ -43,6 +45,12 @@ namespace BusinessLogicLayer
         public void CreateNewBook(BookDTO newBook)
         {
             repositroties.BookRepos.Insert(mapper.Map<Book>(newBook));
+            repositroties.Save();
+        }
+
+        public IEnumerable<AuthorDTO> GetAllAuthors()
+        {
+            return mapper.Map<IEnumerable<AuthorDTO>>(repositroties.AuthorRepos.Get());
         }
 
         public IEnumerable<BookDTO> GetAllBooks()
@@ -95,6 +103,11 @@ namespace BusinessLogicLayer
             //        }
             //    };
             //}
+        }
+
+        public IEnumerable<GenreDTO> GetAllGenres()
+        {
+            return mapper.Map<IEnumerable<GenreDTO>>(repositroties.GenreRepos.Get());
         }
     }
 }
