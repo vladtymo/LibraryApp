@@ -14,7 +14,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <ListBox ItemsSource="{Binding Books}" Grid.Column="0" HorizontalContentAlignment="Stretch">
+        <ListBox ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook, Mode=OneWayToSource}"
+                 Grid.Column="0" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel LastChildFill="False">
@@ -29,8 +30,8 @@
 
         <Grid Grid.Column="2">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
