@@ -58,6 +58,10 @@
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\202103290833054_InitDatabase.cs" />
+    <Compile Include="Migrations\202103290833054_InitDatabase.designer.cs">
+      <DependentUpon>202103290833054_InitDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="LibraryModel.cs" />
     <Compile Include="Migrations\202103260851174_InitialCreate.cs" />
@@ -75,6 +79,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202103260851174_InitialCreate.resx">
       <DependentUpon>202103260851174_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103290833054_InitDatabase.resx">
+      <DependentUpon>202103290833054_InitDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
