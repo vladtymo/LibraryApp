@@ -1,0 +1,56 @@
+﻿<Window x:Class="PresentationLayer.CreateBookWindow"
+        x:Name="window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer"
+        d:DataContext="{d:DesignInstance Type=local:NewBookViewModel}"
+        mc:Ignorable="d"
+        Title="CreateBookWindow" Height="360.348" Width="356.093">
+    <DockPanel>
+        <TextBlock FontSize="36" FontWeight="Bold" TextAlignment="Center" DockPanel.Dock="Top">Create New Book</TextBlock>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <Button Command="{Binding CancelCmd, Mode=OneWay}" CommandParameter="{Binding ElementName=window}" Width="100" Margin="20,10" Padding="10">Cancel</Button>
+            <Button Command="{Binding OkCmd, Mode=OneWay}" CommandParameter="{Binding ElementName=window}" Width="100" Margin="20,10" Padding="10">OK</Button>
+        </StackPanel>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Padding="6,2" VerticalAlignment="Center" FontSize="22">Title:</Label>
+            <TextBox Text="{Binding Book.Title}" Grid.Row="0" Grid.Column="1" Margin="10,5"  VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBox>
+
+            <Label Grid.Row="1" Grid.Column="0" Padding="6,2" VerticalAlignment="Center" FontSize="22">Pages:</Label>
+            <TextBox Text="{Binding Book.Pages}"  Grid.Row="1" Grid.Column="1" Margin="10,5"  VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold"></TextBox>
+
+            <Label Grid.Row="2" Grid.Column="0" Padding="6,2" VerticalAlignment="Center" FontSize="22">Genre:</Label>
+            <ComboBox ItemsSource="{Binding Genres}" SelectedValue="{Binding Book.GenreId}" SelectedValuePath="Id" Grid.Row="2" Grid.Column="1" Margin="10,5" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Label Grid.Row="3" Grid.Column="0" Padding="6,2" VerticalAlignment="Center" FontSize="22">Author:</Label>
+            <ComboBox ItemsSource="{Binding Authors}" SelectedValuePath="Id" SelectedValue="{Binding Book.AuthorId}" Grid.Row="3" Grid.Column="1" Margin="10,5" VerticalAlignment="Bottom" FontSize="26" FontWeight="SemiBold">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding FullName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+    </DockPanel>
+</Window>

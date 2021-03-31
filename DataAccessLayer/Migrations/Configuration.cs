@@ -19,7 +19,7 @@ namespace DataAccessLayer.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            ////////////////////// Genres
+            ///////////////// Genres
             var novela = new Genre() { Name = "Novela" };
             context.Genres.AddOrUpdate(novela);
 
@@ -28,14 +28,16 @@ namespace DataAccessLayer.Migrations
 
             var humour = new Genre() { Name = "Humour" };
             context.Genres.AddOrUpdate(humour);
+
             var drama = new Genre() { Name = "Drama" };
             context.Genres.AddOrUpdate(drama);
 
             var gothicFiction = new Genre() { Name = "Gothic fiction" };
-            context.Genres.AddOrUpdate(gothicFiction); 
+            context.Genres.AddOrUpdate(gothicFiction);
+            
             context.SaveChanges();
 
-            //////////////////// Authors
+            ///////////////// Authors
             var gogol = new Author()
             {
                 FirstName = "Nikolai",
@@ -51,9 +53,10 @@ namespace DataAccessLayer.Migrations
                 BirthDate = new DateTime(1856, 8, 27)
             };
             context.Authors.AddOrUpdate(franko);
+
             context.SaveChanges();
 
-            //////////////////////// Books
+            ///////////////// Books
             context.Books.AddOrUpdate(new Book()
             {
                 Title = "Zakhar Berkut",

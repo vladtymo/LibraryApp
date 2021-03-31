@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+//using BusinessLogicLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,20 +12,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PresentationLayer
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CreateBookWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CreateBookWindow : Window
     {
-        public MainWindow()
+        public CreateBookWindow(object viewModel)
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel();
+            this.DataContext = viewModel;
         }
     }
 }
