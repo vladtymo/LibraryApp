@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-//using BusinessLogicLayer;
 using PresentationLayer.Commands;
+//using BusinessLogicLayer;
 using PresentationLayer.WcfService;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,7 +25,8 @@ namespace PresentationLayer
 
         public MainViewModel()
         {
-            service = new BookServiceClient();
+            service = new BookServiceClient("BasicHttpBinding_IBookService"); // WCF
+            //service = new BookService();
             books = new ObservableCollection<BookViewModel>();
 
             IConfigurationProvider config = new MapperConfiguration(cfg =>

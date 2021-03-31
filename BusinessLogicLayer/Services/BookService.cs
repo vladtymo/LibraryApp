@@ -37,7 +37,6 @@ namespace BusinessLogicLayer
                     cfg.CreateMap<AuthorDTO, Author>();
                     cfg.CreateMap<GenreDTO, Genre>();
                 });
-
             mapper = new Mapper(config);
         }
 

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 //using BusinessLogicLayer;
-using PresentationLayer.Commands;
 using PresentationLayer.WcfService;
+using PresentationLayer.Commands;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;

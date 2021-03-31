@@ -93,6 +93,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\artemchat - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\artemchat - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\artemchat - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
