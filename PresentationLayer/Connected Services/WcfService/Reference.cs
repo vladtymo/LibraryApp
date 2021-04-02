@@ -309,13 +309,13 @@ namespace PresentationLayer.WcfService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfService.IBookService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WcfService.IBookService", CallbackContract=typeof(PresentationLayer.WcfService.IBookServiceCallback))]
     public interface IBookService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookService/CreateNewBook", ReplyAction="http://tempuri.org/IBookService/CreateNewBookResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBookService/CreateNewBook")]
         void CreateNewBook(PresentationLayer.WcfService.BookDTO newBook);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookService/CreateNewBook", ReplyAction="http://tempuri.org/IBookService/CreateNewBookResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBookService/CreateNewBook")]
         System.Threading.Tasks.Task CreateNewBookAsync(PresentationLayer.WcfService.BookDTO newBook);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookService/GetAllBooks", ReplyAction="http://tempuri.org/IBookService/GetAllBooksResponse")]
@@ -335,6 +335,25 @@ namespace PresentationLayer.WcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBookService/GetAllGenres", ReplyAction="http://tempuri.org/IBookService/GetAllGenresResponse")]
         System.Threading.Tasks.Task<PresentationLayer.WcfService.GenreDTO[]> GetAllGenresAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBookService/Login")]
+        void Login();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBookService/Login")]
+        System.Threading.Tasks.Task LoginAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBookService/Logout")]
+        void Logout();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBookService/Logout")]
+        System.Threading.Tasks.Task LogoutAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IBookServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBookService/TakeBook")]
+        void TakeBook(PresentationLayer.WcfService.BookDTO book);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -343,25 +362,26 @@ namespace PresentationLayer.WcfService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class BookServiceClient : System.ServiceModel.ClientBase<PresentationLayer.WcfService.IBookService>, PresentationLayer.WcfService.IBookService {
+    public partial class BookServiceClient : System.ServiceModel.DuplexClientBase<PresentationLayer.WcfService.IBookService>, PresentationLayer.WcfService.IBookService {
         
-        public BookServiceClient() {
+        public BookServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public BookServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public BookServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public BookServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public BookServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public BookServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public BookServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public BookServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public BookServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public void CreateNewBook(PresentationLayer.WcfService.BookDTO newBook) {
@@ -394,6 +414,22 @@ namespace PresentationLayer.WcfService {
         
         public System.Threading.Tasks.Task<PresentationLayer.WcfService.GenreDTO[]> GetAllGenresAsync() {
             return base.Channel.GetAllGenresAsync();
+        }
+        
+        public void Login() {
+            base.Channel.Login();
+        }
+        
+        public System.Threading.Tasks.Task LoginAsync() {
+            return base.Channel.LoginAsync();
+        }
+        
+        public void Logout() {
+            base.Channel.Logout();
+        }
+        
+        public System.Threading.Tasks.Task LogoutAsync() {
+            return base.Channel.LogoutAsync();
         }
     }
 }

@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://artemchat.gear.host/Service1.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:53896/Service1.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="d05e5fae-5d29-419f-a451-73e555e5ceee" SourceId="1" SourceUrl="http://artemchat.gear.host/Service1.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service131.xsd" MetadataType="Schema" ID="9a731004-632b-4e72-a01b-a24596f379ca" SourceId="1" SourceUrl="http://artemchat.gear.host/Service1.svc?xsd=xsd2" />
-    <MetadataFile FileName="BookService1.wsdl" MetadataType="Wsdl" ID="07bbd7f9-346f-49e9-aad0-bb96f34a8bbb" SourceId="1" SourceUrl="http://artemchat.gear.host/Service1.svc?wsdl" />
-    <MetadataFile FileName="Service132.xsd" MetadataType="Schema" ID="18df73f5-70f4-4c18-9db3-6c8cd5d0af05" SourceId="1" SourceUrl="http://artemchat.gear.host/Service1.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service11.disco" MetadataType="Disco" ID="6356a727-99cd-4561-ba75-141efd255511" SourceId="1" SourceUrl="http://artemchat.gear.host/Service1.svc?disco" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="d5c83322-bb74-4c3f-a34b-447ecefb9ae6" SourceId="1" SourceUrl="http://localhost:53896/Service1.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="62cea780-5aea-4d0c-85b1-3e00487eeb2c" SourceId="1" SourceUrl="http://localhost:53896/Service1.svc?disco" />
+    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="f672f643-ec27-4267-9312-573f2ca35fb3" SourceId="1" SourceUrl="http://localhost:53896/Service1.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="1754585b-f3f0-4eea-9fdb-f4539ee162cb" SourceId="1" SourceUrl="http://localhost:53896/Service1.svc?xsd=xsd0" />
+    <MetadataFile FileName="BookService.wsdl" MetadataType="Wsdl" ID="0ba76efc-24de-4c0f-b92a-1636e5f26dd7" SourceId="1" SourceUrl="http://localhost:53896/Service1.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

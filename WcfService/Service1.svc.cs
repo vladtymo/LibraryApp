@@ -11,8 +11,11 @@ using System.Text;
 
 namespace WcfService
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class BookService : IBookService
     {
+        private HashSet<ICallback> callbacks = new HashSet<ICallback>();
+
         private IUnitOfWork repositroties;
         private IMapper mapper;
 
@@ -32,15 +35,21 @@ namespace WcfService
                 cfg.CreateMap<AuthorDTO, Author>();
                 cfg.CreateMap<GenreDTO, Genre>();
             });
-
             mapper = new Mapper(config);
         }
 
         // Service Public Interface
         public void CreateNewBook(BookDTO newBook)
         {
-            repositroties.BookRepos.Insert(mapper.Map<Book>(newBook));
+            Book addedBook = repositroties.BookRepos.Insert(mapper.Map<Book>(newBook));
             repositroties.Save();
+
+            BookDTO dto = mapper.Map<BookDTO>(addedBook);
+
+            foreach (var c in callbacks)
+            {
+                c.TakeBook(dto);
+            }
         }
 
         public IEnumerable<AuthorDTO> GetAllAuthors()
@@ -57,6 +66,17 @@ namespace WcfService
         public IEnumerable<GenreDTO> GetAllGenres()
         {
             return mapper.Map<IEnumerable<GenreDTO>>(repositroties.GenreRepos.Get());
+        }
+
+        public void Login()
+        {
+            // get current user callback
+            callbacks.Add(OperationContext.Current.GetCallbackChannel<ICallback>());
+        }
+
+        public void Logout()
+        {
+            callbacks.Remove(OperationContext.Current.GetCallbackChannel<ICallback>());
         }
     }
 }

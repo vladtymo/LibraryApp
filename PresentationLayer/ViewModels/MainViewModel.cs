@@ -5,6 +5,7 @@ using PresentationLayer.WcfService;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,7 +13,7 @@ using System.Windows.Input;
 
 namespace PresentationLayer
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase, IBookServiceCallback
     {
         private IBookService service;
         private IMapper mapper;
@@ -25,8 +26,14 @@ namespace PresentationLayer
 
         public MainViewModel()
         {
-            service = new BookServiceClient("BasicHttpBinding_IBookService"); // WCF
+            // BLL (.dll)
             //service = new BookService();
+
+            // WCF
+            service = new BookServiceClient(new InstanceContext(this));
+
+            service.Login();
+
             books = new ObservableCollection<BookViewModel>();
 
             IConfigurationProvider config = new MapperConfiguration(cfg =>
@@ -46,7 +53,14 @@ namespace PresentationLayer
             getBooksCommand = new DelegateCommand(o => GetBooks());
             createBookCommand = new DelegateCommand(o => CreateNewBook());
         }
-
+        ~MainViewModel()
+        {
+            service.Logout();
+        }
+        public void TakeBook(BookDTO book)
+        {
+            books.Add(mapper.Map<BookViewModel>(book));
+        }
 
         public void CreateNewBook()
         {

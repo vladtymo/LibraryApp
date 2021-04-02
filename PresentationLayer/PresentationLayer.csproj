@@ -119,7 +119,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\WcfService\BookService1.wsdl" />
+    <None Include="Connected Services\WcfService\BookService.wsdl" />
     <None Include="Connected Services\WcfService\PresentationLayer.WcfService.AuthorDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -129,13 +129,13 @@
     <None Include="Connected Services\WcfService\PresentationLayer.WcfService.GenreDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\WcfService\Service13.xsd">
+    <None Include="Connected Services\WcfService\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\WcfService\Service131.xsd">
+    <None Include="Connected Services\WcfService\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\WcfService\Service132.xsd">
+    <None Include="Connected Services\WcfService\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -166,7 +166,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WcfService\Service11.disco" />
+    <None Include="Connected Services\WcfService\Service1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

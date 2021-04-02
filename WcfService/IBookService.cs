@@ -8,10 +8,10 @@ using System.Text;
 
 namespace WcfService
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(ICallback))]
     public interface IBookService
     {
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void CreateNewBook(BookDTO newBook);
         [OperationContract]
         IEnumerable<BookDTO> GetAllBooks();
@@ -19,5 +19,16 @@ namespace WcfService
         IEnumerable<AuthorDTO> GetAllAuthors();
         [OperationContract]
         IEnumerable<GenreDTO> GetAllGenres();
+
+        [OperationContract(IsOneWay = true)]
+        void Login();
+        [OperationContract(IsOneWay = true)]
+        void Logout();
+    }
+
+    public interface ICallback
+    {
+        [OperationContract(IsOneWay = true)]
+        void TakeBook(BookDTO book);
     }
 }
